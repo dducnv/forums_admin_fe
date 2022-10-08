@@ -1,7 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react'
 import { useAuth } from '@/hooks'
-import { Loading } from '../page_components'
-import { LoginPage } from '../page_components/login'
+import { Loading, LoginPage } from '@/components/page_components'
 
 type AuthProps = {
   children: ReactNode
@@ -14,7 +13,7 @@ export function AuthRequest({ children }: AuthProps) {
     <>
       {fistLoading ? (
         <Loading />
-      ) :!fistLoading && !isAdmin? (
+      ) :!fistLoading && !profile?.name? (
         <LoginPage />
       ) : (
         children
