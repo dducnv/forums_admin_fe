@@ -1,37 +1,77 @@
-import { ReactNode } from 'react'
+import React, { ReactNode, useState } from 'react'
+import {Box,CssBaseline,Divider,List,ListItem,ListItemButton,
+  ListItemIcon,ListItemText,AppBar,Toolbar,IconButton,Typography,InputBase,Badge,MenuItem,Menu} from '@mui/material';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+import MenuIcon from '@mui/icons-material/Menu';
+
+const drawerWidth = 240;
 import {
   AuthRequest,
   FooterLayout,
   Navbar,
   Sidebar,
 } from '@/components/layouts'
-import * as React from 'react'
-import { Box, CssBaseline, Toolbar } from '@mui/material'
-const drawerWidth = 240
 type LayoutProps = {
-  children: ReactNode
-  window?: () => Window
+  children: ReactNode,
+  window?: () => Window;
 }
+export function LayoutComponent({ children , window}: LayoutProps) {
+  const [collapsed, setCollapsed] = useState(false)
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
-export function LayoutComponent({ children }: LayoutProps) {
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);}
+
+  const drawer = (
+    <div>
+      <Toolbar >
+        Forums
+      </Toolbar>
+      <Divider />
+      <List>
+        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
+
+  const container = window !== undefined ? () => window().document.body : undefined;
   return (
     <AuthRequest>
       <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
-        <Navbar />
-        <Sidebar />
-        <Box
-          component='main'
-          sx={{
-            flexGrow: 1,
-            p: 3,
-            width: { sm: `calc(100% - ${drawerWidth}px)` },
-          }}>
-          <Toolbar />
-          {children}
-        </Box>
-        <FooterLayout />
-      </Box>
+    <CssBaseline />
+    <Navbar/>
+    <Sidebar/>
+    <Box
+      component="main"
+      sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+    >
+      <Toolbar />
+   {children}
+    </Box>
+  </Box>
     </AuthRequest>
   )
 }
