@@ -15,11 +15,13 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material'
-import InboxIcon from '@mui/icons-material/MoveToInbox'
-import MailIcon from '@mui/icons-material/Mail'
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import MenuIcon from '@mui/icons-material/Menu'
 import HomeIcon from '@mui/icons-material/Home'
 import VillaIcon from '@mui/icons-material/Villa'
+import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
+import PersonIcon from '@mui/icons-material/Person';
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 const drawerWidth = 240
 type SidebarProps = {
   window?: () => Window
@@ -32,10 +34,36 @@ const sidebar = [
     path: '/',
   },
   {
-    icon: HomeIcon,
+    icon: VillaIcon,
     name: 'Test',
     path: '/test',
   },
+  {
+    icon: PlaylistAddCheckIcon,
+    name: 'Verify Posts',
+    path: '/post',
+  },
+  {
+    icon: PlaylistAddIcon,
+    name: 'Create Post',
+    path: '/addpost',
+  },
+  {
+    icon: MenuIcon,
+    name: 'All Post',
+    path: '/allpost',
+  },
+  {
+    icon: PersonAddAlt1Icon,
+    name: 'Add User',
+    path: '/adduser',
+  },
+  {
+    icon: PersonIcon,
+    name: 'List User',
+    path: '/listuser',
+  },
+  
 ]
 export function Sidebar({ window }: SidebarProps) {
   const [collapsed, setCollapsed] = useState(false)

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@autocomplete/material-ui": "^0.0.17",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/base": "^5.0.0-alpha.100",
@@ -16,6 +17,9 @@
     "@mui/material": "^5.10.8",
     "@mui/styled-engine-sc": "^5.10.6",
     "@mui/system": "^5.10.8",
+    "@mui/x-data-grid": "^5.17.6",
+    "@mui/x-data-grid-generator": "^5.17.6",
+    "@mui/x-data-grid-pro": "^5.17.6",
     "axios": "^0.27.2",
     "cookies": "^0.8.0",
     "http-proxy": "^1.18.1",
