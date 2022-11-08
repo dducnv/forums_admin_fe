@@ -3,9 +3,7 @@ import Link from 'next/link'
 import {
   Box,
   AppBar,
-  CssBaseline,
   Drawer,
-  IconButton,
   Divider,
   List,
   ListItem,
@@ -13,15 +11,19 @@ import {
   ListItemIcon,
   ListItemText,
   Toolbar,
-  Typography,
 } from '@mui/material'
-import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd'
 import MenuIcon from '@mui/icons-material/Menu'
 import HomeIcon from '@mui/icons-material/Home'
-import VillaIcon from '@mui/icons-material/Villa'
-import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
-import PersonIcon from '@mui/icons-material/Person';
-import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
+import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1'
+import PersonIcon from '@mui/icons-material/Person'
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck'
+
+import Avatar from '@mui/material/Avatar'
+import Stack from '@mui/material/Stack'
+import { deepOrange, green } from '@mui/material/colors'
+import AssignmentIcon from '@mui/icons-material/Assignment'
+
 const drawerWidth = 240
 type SidebarProps = {
   window?: () => Window
@@ -34,36 +36,30 @@ const sidebar = [
     path: '/',
   },
   {
-    icon: VillaIcon,
-    name: 'Test',
-    path: '/test',
-  },
-  {
     icon: PlaylistAddCheckIcon,
-    name: 'Verify Posts',
-    path: '/post',
-  },
-  {
-    icon: PlaylistAddIcon,
-    name: 'Create Post',
-    path: '/addpost',
-  },
-  {
-    icon: MenuIcon,
-    name: 'All Post',
-    path: '/allpost',
-  },
-  {
-    icon: PersonAddAlt1Icon,
-    name: 'Add User',
-    path: '/adduser',
+    name: 'Bài đăng',
+    path: '/post/list',
   },
   {
     icon: PersonIcon,
-    name: 'List User',
+    name: 'Người Dùng',
     path: '/listuser',
   },
-  
+  {
+    icon: MenuIcon,
+    name: 'Danh sách Tag',
+    path: '/tags',
+  },
+  {
+    icon: PlaylistAddIcon,
+    name: 'Tạo bài đăng',
+    path: '/post/addpost',
+  },
+  // {
+  //   icon: PersonAddAlt1Icon,
+  //   name: 'Thêm người dùng',
+  //   path: '/adduser',
+  // },
 ]
 export function Sidebar({ window }: SidebarProps) {
   const [collapsed, setCollapsed] = useState(false)
@@ -75,8 +71,14 @@ export function Sidebar({ window }: SidebarProps) {
 
   const drawer = (
     <div>
-      <Toolbar>Forums</Toolbar>
-      <Divider />
+      <Stack direction='row' spacing={2}></Stack>
+      <Toolbar style={{width: '100'}}>
+        <Avatar sx={{ bgcolor: green[500] }} variant='rounded'>
+          <AssignmentIcon />
+        </Avatar>
+          Forums
+      </Toolbar>
+      <Divider/>
       <List>
         {sidebar.map((item) => (
           <Link key={item.name} href={item.path}>

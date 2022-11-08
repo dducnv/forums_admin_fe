@@ -1,40 +1,53 @@
 import React from 'react'
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
+import { useEffect, useState } from 'react'
+import { usersApi } from '@/api-client/user-api'
 
 const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'username', headerName: 'Tên tài khoản', width: 300 },
-  { field: 'role', headerName: 'Vai trò', width: 130 },
-  { field: 'fullname', headerName: 'Họ và tên', width: 130 },
-  { field: 'phone', headerName: 'Số điện thoại', width: 130 },
-  { field: 'time', headerName: 'Thời gian tạo', width: 130 },
-  { field: 'status', headerName: 'Trạng thái', width: 130 },
-  { field: 'action', headerName: 'Hoạt động', width: 130 },
-];
+  { field: 'id', headerName: 'Id', width: 100 },
+  {
+    field: 'avatar',
+    headerName: 'Avatar',
+    width: 100,
+    renderCell: (param: any) => (
+      <img
+        src={param?.value}
+        className='w-6 h-6 object-contain overflow-hidden'
+      />
+    ),
+  },
+  { field: 'name', headerName: 'Tên tài khoản', width: 200 },
+  { field: 'email', headerName: 'Email', width: 200 },
+  { field: 'username', headerName: 'Tên', width: 200 },
+  { field: 'createdAt', headerName: 'Ngày Tạo', width: 200 },
+  { field: 'role', headerName: 'Trạng thái', width: 200 },
+  { field: 'post_count', headerName: 'Bài Đăng', width: 200 },
+]
 
-const rows = [
-  { id: 1, username: 'quanglangthang@gmail.com', role: 'người sử dụng' ,fullname:'Quang béo',phone:'0966186860',time:'30/5/2022',status:'đang hoạt động',action:'sửa xóa'},
-  { id: 2, username: 'quanglangthang@gmail.com', role: 'người sử dụng' ,fullname:'Quang béo',phone:'0966186860',time:'30/5/2022',status:'đang hoạt động',action:'sửa xóa'},
-  { id: 3, username: 'quanglangthang@gmail.com', role: 'người sử dụng' ,fullname:'Quang béo',phone:'0966186860',time:'30/5/2022',status:'đang hoạt động',action:'sửa xóa'},
-  { id: 4, username: 'quanglangthang@gmail.com', role: 'người sử dụng' ,fullname:'Quang béo',phone:'0966186860',time:'30/5/2022',status:'đang hoạt động',action:'sửa xóa'},
-  { id: 5, username: 'quanglangthang@gmail.com', role: 'người sử dụng' ,fullname:'Quang béo',phone:'0966186860',time:'30/5/2022',status:'đang hoạt động',action:'sửa xóa'},
-  { id: 6, username: 'quanglangthang@gmail.com', role: 'người sử dụng' ,fullname:'Quang béo',phone:'0966186860',time:'30/5/2022',status:'đang hoạt động',action:'sửa xóa'},
-  { id: 7, username: 'quanglangthang@gmail.com', role: 'người sử dụng' ,fullname:'Quang béo',phone:'0966186860',time:'30/5/2022',status:'đang hoạt động',action:'sửa xóa'},
-  { id: 8, username: 'quanglangthang@gmail.com', role: 'người sử dụng' ,fullname:'Quang béo',phone:'0966186860',time:'30/5/2022',status:'đang hoạt động',action:'sửa xóa'},
-];
+const rows = []
 
 type Props = {}
 
 const Listuser = (props: Props) => {
+  const [users, setUsers] = useState([])
+  useEffect(() => {
+    const getPosts = async () => {
+      const data: any = await usersApi.getList().then((res: any) => {
+        console.log(res)
+        setUsers(res)
+      })
+    }
+    getPosts()
+  }, [])
+
   return (
-    <div style={{ height: 400, width: '100%' }}>
-        <h2>List User</h2>
+    <div style={{ height: 600, width: '100%' }}>
+      <h2> Danh Sách Người Dùng </h2>
       <DataGrid
-        rows={rows}
+        rows={users}
         columns={columns}
-        pageSize={5}
+        pageSize={100}
         rowsPerPageOptions={[5]}
-        checkboxSelection
       />
     </div>
   )
