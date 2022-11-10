@@ -1,14 +1,13 @@
 import React, { ReactNode, useState } from 'react'
 import {Box,CssBaseline,Divider,List,ListItem,ListItemButton,
-  ListItemIcon,ListItemText,AppBar,Toolbar,IconButton,Typography,InputBase,Badge,MenuItem,Menu} from '@mui/material';
+  ListItemIcon,ListItemText,Toolbar} from '@mui/material';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import MenuIcon from '@mui/icons-material/Menu';
+
 
 const drawerWidth = 240;
 import {
   AuthRequest,
-  FooterLayout,
   Navbar,
   Sidebar,
 } from '@/components/layouts'

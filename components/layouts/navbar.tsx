@@ -176,7 +176,7 @@ export function Navbar() {
             noWrap
             component='div'
             sx={{ display: { xs: 'none', sm: 'block' } }}>
-            MUI
+            FORUMS
           </Typography>
 
           <Box sx={{ flexGrow: 1 }} />
