@@ -64,8 +64,9 @@ export function LayoutComponent({ children , window}: LayoutProps) {
     <Navbar/>
     <Sidebar/>
     <Box
+    className='bg-gray-100 min-h-[100vh] p-4'
       component="main"
-      sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+      sx={{ flexGrow: 1, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
     >
       <Toolbar />
    {children}

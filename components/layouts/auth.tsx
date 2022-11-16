@@ -13,7 +13,7 @@ export function AuthRequest({ children }: AuthProps) {
     <>
       {fistLoading ? (
         <Loading />
-      ) :!fistLoading && isAdmin? (
+      ) :!fistLoading && !isAdmin? (
         <LoginPage />
       ) : (
         children

@@ -19,10 +19,11 @@ export function LoginPage() {
   return (
     <>
       <div className='h-screen flex justify-center items-center'>
-        <div className=' w-1/4 p-3 bg-gray-400'>
+        <div className=' w-1/4 p-3 text-center border bg-gray-100'>
+          <h1>Admin Login</h1>
           <button
             onClick={loginWithGoogle}
-            className='w-full cursor-pointer py-3 bg-indigo-500 text-white font-medium'>
+            className='w-full cursor-pointer py-3 font-bold bg-indigo-500 text-white font-medium'>
             Login with google
           </button>
         </div>

@@ -3,9 +3,7 @@ import Link from 'next/link'
 import {
   Box,
   AppBar,
-  CssBaseline,
   Drawer,
-  IconButton,
   Divider,
   List,
   ListItem,
@@ -13,12 +11,19 @@ import {
   ListItemIcon,
   ListItemText,
   Toolbar,
-  Typography,
 } from '@mui/material'
-import HomeIcon from '@mui/icons-material/Home';
-import PersonIcon from '@mui/icons-material/Person';
-import AdbIcon from '@mui/icons-material/Adb';
 
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd'
+import MenuIcon from '@mui/icons-material/Menu'
+import HomeIcon from '@mui/icons-material/Home'
+import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1'
+import PersonIcon from '@mui/icons-material/Person'
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck'
+
+import Avatar from '@mui/material/Avatar'
+import Stack from '@mui/material/Stack'
+import { deepOrange, green } from '@mui/material/colors'
+import AssignmentIcon from '@mui/icons-material/Assignment'
 
 const drawerWidth = 240
 type SidebarProps = {
@@ -32,10 +37,27 @@ const sidebar = [
     path: '/',
   }, 
   {
+
+    icon: PlaylistAddCheckIcon,
+    name: 'Bài đăng',
+    path: '/post/list',
+  },
+  {
     icon: PersonIcon,
-    name: 'Dashboard',
-    path: '/dashboard',
+    name: 'Người Dùng',
+    path: '/listuser',
+  },
+  {
+    icon: MenuIcon,
+    name: 'Danh sách Tag',
+    path: '/tags',
   }
+  // {
+  //   icon: PersonAddAlt1Icon,
+  //   name: 'Thêm người dùng',
+  //   path: '/adduser',
+  // },
+
 ]
 export function Sidebar({ window }: SidebarProps) {
   const [collapsed, setCollapsed] = useState(false)
@@ -47,8 +69,14 @@ export function Sidebar({ window }: SidebarProps) {
 
   const drawer = (
     <div>
-      <Toolbar>Forums</Toolbar>
-      <Divider />
+      <Stack direction='row' spacing={2}></Stack>
+      <Toolbar style={{width: '100'}}>
+        {/* <Avatar sx={{ bgcolor: green[500] }} variant='rounded'>
+          <AssignmentIcon />
+        </Avatar> */}
+          <h2>IT FORUMS</h2>
+      </Toolbar>
+      <Divider/>
       <List>
         {sidebar.map((item) => (
           <Link key={item.name} href={item.path}>
@@ -108,6 +136,7 @@ export function Sidebar({ window }: SidebarProps) {
 }
 
 
+
 // import React from "react";
 // import ListItem from "@material-ui/core/ListItem";
 // import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -154,3 +183,4 @@ export function Sidebar({ window }: SidebarProps) {
 //     </ListItem>
 //   </div>
 // );
+
