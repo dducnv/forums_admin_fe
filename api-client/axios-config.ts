@@ -1,6 +1,6 @@
 import axios from 'axios'
 const axiosConfig = axios.create({
-  baseURL: '/api',
+  baseURL: 'https://appcuaduc.as.r.appspot.com/api',
   headers: {
     'content-type': 'application/json',
   },
